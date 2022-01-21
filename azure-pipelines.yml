@@ -17,12 +17,7 @@ steps:
   inputs:
     version: '$(dotnetSdkVersion)'
 
-- task: Npm@1
-  displayName: 'npm audit'
-  inputs:
-    command: custom
-    customCommand: 'audit --registry=https://registry.npmjs.org/'
-    
+
 - task: Npm@1
   displayName: 'Run npm install'
   inputs:
