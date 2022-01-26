@@ -127,7 +127,7 @@ stages:
       - task: UseDotNet@2
         displayName: 'Use .NET SDK $(dotnetSdkVersion)'
         inputs:
-          version: '5.8'
+          version: '$(dotnetSdkVersion)'
       - task: DotNetCoreCLI@2
         displayName: 'Build the project - $(buildConfiguration)'
         inputs:
