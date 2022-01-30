@@ -4,6 +4,7 @@ trigger:
 variables:
     buildConfiguration: 'Release'
     dotnetSdkVersion: '5.x'
+    driverlocation : 'C:\Users\kossy\edgedriver_win64'
   
 stages:
   - stage: 'Build'
@@ -120,7 +121,7 @@ stages:
       dependsOn: Deploy
       displayName: 'Run UI tests'
       pool: Default
-      variables:
+      variables: 
       - group: 'Release'
       steps: 
       - task: UseDotNet@2
@@ -140,6 +141,10 @@ stages:
           arguments: '--no-build --configuration $(buildConfiguration)'
           publishTestResults: true
           projects: '$(System.DefaultWorkingDirectory)/**/*UITests.csproj'
+        env:
+          ChromeWebDriver: 'C:\Users\kossy\edgedriver_win64'
+          EdgeWebDriver: 'C:\Users\kossy\edgedriver_win64'
+          GeckoWebDriver: 'C:\Users\kossy\edgedriver_win64'   
   
   - stage: 'Staging'
     displayName: 'Deploy to the staging environment'
